@@ -22,12 +22,10 @@ const PersonalRoom = () => {
     const meetingId = user?.id;
     const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${meetingId}?personal=true`;
     const { call, isCallLoading } = useGetCallById(meetingId!);
-    console.log('call : ', call);
     const startRoom = async () => {
         try {
             if (!client || !user) return;
             if (!isCallLoading && !call) {
-                console.log('newCall being created');
                 const newCall = client.call('default', meetingId!);
                 await newCall.getOrCreate({
                     data: {

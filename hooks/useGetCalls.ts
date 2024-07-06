@@ -49,8 +49,6 @@ export const useGetCalls = () => {
         );
     });
 
-    console.log('upcomingCalls : ', upcomingCalls);
-
     return { 
         previousCalls,
         upcomingCalls,

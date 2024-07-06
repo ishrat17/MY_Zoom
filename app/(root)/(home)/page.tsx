@@ -19,11 +19,6 @@ const Home = () => {
 
 
   const { upcomingCalls } = useGetCalls();
-  /* const firstUpcomingCallDate = upcomingCalls[0]?.state?.startsAt?.toLocaleDateString();
-  console.log('firstUpcomingCallDate : ', firstUpcomingCallDate); */
-  /* if (firstUpcomingCallDate && firstUpcomingCallDate === today.getDate()) {
-
-  } */
   const todayUpcomingCalls = upcomingCalls?.length > 0 && upcomingCalls.filter((call : Call) => 
     (
       call.state.startsAt?.toLocaleDateString("en-US" ,  {
@@ -34,14 +29,11 @@ const Home = () => {
       }) === date
     )
   );
-
-  console.log('todayUpcomingCalls : ', todayUpcomingCalls);
   
   const nearestUpcomingCall = todayUpcomingCalls && todayUpcomingCalls?.reduce((prev : Call, curr: Call) => {
     return prev.state?.startsAt?.getTime()! < curr.state?.startsAt?.getTime()! ? prev : curr;
   },todayUpcomingCalls[0]);
 
-  console.log('nearestUpcomingCall : ' , nearestUpcomingCall);
   const nearestCallTime = nearestUpcomingCall && nearestUpcomingCall.state?.startsAt?.toLocaleTimeString("en-US", {
     hour: '2-digit',
     minute: '2-digit',
